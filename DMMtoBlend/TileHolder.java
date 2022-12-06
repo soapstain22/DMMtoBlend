@@ -1,7 +1,7 @@
+package DMMtoBlend;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Stack;
-
 public class TileHolder {
     static ArrayList<TileHolder> dictionary = new ArrayList<>();
     String position;

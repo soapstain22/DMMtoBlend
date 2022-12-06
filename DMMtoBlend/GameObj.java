@@ -1,5 +1,5 @@
+package DMMtoBlend;
 import java.util.ArrayList;
-
 public class GameObj {
     GameObj parent = null;
 

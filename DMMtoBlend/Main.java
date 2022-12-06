@@ -1,7 +1,8 @@
+package DMMtoBlend;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
-
 public class Main {
     public static String gameRoot = "C:\\Users\\Max\\Desktop\\GS13 Revamp\\GS13-main";
     public static String DMEPath = "C:\\Users\\Max\\Desktop\\GS13 Revamp\\GS13-main\\tgstation.dme";
