@@ -5,14 +5,14 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 public class Cook {
-    String fileName;
-    String[] states;
-    String[] dirs;
-    String[] frames;
-    BufferedImage[][] cache;
+    final String fileName;
+    final String[] states;
+    final String[] dirs;
+    final String[] frames;
+    final BufferedImage[][] cache;
+    final int length;
+    final int width;
     ArrayList<BufferedImage> line;
-    int length;
-    int width;
     Cook(String file,String[] sta,String[] dir, String[] frame,BufferedImage[][] cac,int x, int y){
         fileName = file;
         frames = frame;

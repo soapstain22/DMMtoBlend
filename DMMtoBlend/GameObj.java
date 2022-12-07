@@ -18,7 +18,7 @@ public class GameObj {
         this.dir = dir;
         this.path = path; }
     GameObj(String path) {
-        if (path == "root"){
+        if (path.equals("root")){
             DirectoryHelper.root = this;
             this.path = "root";
         }
@@ -34,9 +34,6 @@ public class GameObj {
             children.add(g);
         }
 
-
-
-
     }
     public boolean hasParent() {
         return parent != null;
@@ -45,16 +42,16 @@ public class GameObj {
         return children.size() != 0;
     }
     public boolean hasChild(GameObj g) {
-        for (int i = 0; i < this.children.size(); i++) {
-            if (this.children.get(i).path.equals(g.path)){
+        for (GameObj child : this.children) {
+            if (child.path.equals(g.path)) {
                 return true;
             }
         }
         return false;
     }public GameObj containsParent(String s) {
-        for (int i = 0; i < children.size(); i++) {
-            if (children.get(i).path == s){
-                return children.get(i);
+        for (GameObj child : children) {
+            if (child.path.equals(s)) {
+                return child;
             }
         }
         return null;

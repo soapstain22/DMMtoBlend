@@ -4,11 +4,16 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 public class Main {
+    //i refuse to change my filepath. rip gs13
     public static String gameRoot = "C:\\Users\\Max\\Desktop\\GS13 Revamp\\GS13-main";
     public static String DMEPath = "C:\\Users\\Max\\Desktop\\GS13 Revamp\\GS13-main\\tgstation.dme";
     public static String mapPath = "C:\\Users\\Max\\Desktop\\GS13 Revamp\\GS13-main\\_maps\\map_files\\Deltastation\\DeltaStation2.dmm";
     public static String exportRoot = "C:\\Users\\Max\\Documents\\3d\\renderSS13\\javaDMM\\jabba\\icon";
     public static void main(String[] args) throws IOException {
+        //gameRoot = args[0];
+        //DMEPath = args[1];
+        //mapPath = args[2];
+        //exportRoot = args[3];
         DirectoryHelper.initDirectory(exportRoot);
         try {
             loadFile(mapPath);

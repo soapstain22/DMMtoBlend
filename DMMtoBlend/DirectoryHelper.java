@@ -132,20 +132,12 @@ public class DirectoryHelper {
         BufferedImage[][] shit = new BufferedImage[x][y];
         System.out.printf ("%-15s "+icon+ "\n", "init");
         for (int i = 0; i < (y); i++) {
-            //System.out.printf ("%-15s "+i+ "/"+ indexHeight + "\n", "y");
             for (int j = 0; j < (x); j++) {
-               // System.out.printf ("%-15s "+j+ "/"+ indexWidth + "\n", "x");
-                // System.out.println("number " + t + " at x " + j + " y " + i + " refrencing " + states[t] + " in " + out + " ORIGINAL : " + in);
                 shit[j][i] = b.getSubimage(j*tilew, i*tileh, tilew, tileh);
             }
         }
         Cook c = new Cook(out,states,dirs,frames,shit, tilew,tileh);
         c.bake();
-        //File outputFile;
-        //                    BufferedImage w =
-        //                    String work = out+"/"+t+" "+states[t] + ".png";
-        //                    outputFile = new File(work);
-        //                    ImageIO.write(w, "png", outputFile);
     }
     public static GameObj generateObjNodeTree(String s) {
         //System.out.printf ("%-15s "+s + "\n", "makingNode");
