@@ -5,10 +5,12 @@ public class GameObj {
 
     ArrayList<GameObj> children = new ArrayList<>();
     private String icon = null;
-    private String icon_state = null;
+	private String icon_state = null;
     private String path = "";
     private int dir = 0;
-
+	private float lightPower = 0;
+	private String modelOverride = null;
+	private int wallPress = 0;
     public String getPath() {
         return path;
     }
