@@ -74,7 +74,6 @@ public class DirectoryHelper {
         workFolder.mkdirs();
         File poo = new File(out + "/" + f.getIcon_state()+".png");
         poo.createNewFile();
-        ArrayList<BufferedImage> stack = new ArrayList<>();
         BufferedImage b = ImageIO.read(new File(in));
         int high = b.getHeight();
         int wide = b.getWidth();
@@ -140,7 +139,6 @@ public class DirectoryHelper {
         c.bake();
     }
     public static GameObj generateObjNodeTree(String s) {
-        //System.out.printf ("%-15s "+s + "\n", "makingNode");
         return generateObjNodeTree(s,root,0);
     }
     public static GameObj generateObjNodeTree(String s,GameObj g, int depth) {
@@ -155,7 +153,6 @@ public class DirectoryHelper {
         }else{
             GameObj f = new GameObj(s);
             g.addChildren(f);
-            //System.out.printf ("%-15s "+s +">"+f.getName() + "\n", "parented");
             return f;
 
         }
@@ -173,11 +170,9 @@ public class DirectoryHelper {
         return generateObjNodeTree(s,f,depth+1);
     }
     public static GameObj searchTree(String s){
-        //System.out.printf ("%-15s "+s + "\n", "searching");
         return searchTree(s,root,0);
     }
     private static GameObj searchTree(String s,GameObj g,int depth){
-        //System.out.printf ("%-15s "+s+ "\n", "p "+depth);
         String[] poop = s.substring(1).split("/");
         StringBuilder j = new StringBuilder();
         if (depth<poop.length) {
@@ -185,21 +180,17 @@ public class DirectoryHelper {
                 j.append("/").append(poop[i]);
             }
         }else {
-            //System.out.printf ("%-15s "+s + "\n", "found");
             return g;
         }
         if (g.hasChild()){
-            //System.out.printf ("%-15s "+s + "\n", "childsearch");
             int x = g.children.size();
             for (int i = 0; i < x; i++) {
                 String sh = g.children.get(i).getPath();
                 if (sh.equals(j.toString())){
-                   // System.out.printf ("%-15s "+s + "\n", "found");
                     return searchTree(s,g.children.get(i),depth+1);
                 }
             }
         }
-        //System.out.printf ("%-15s "+s + "\n", "notOnMap");
         return null;
     }
 }

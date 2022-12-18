@@ -1,5 +1,7 @@
 package DMMtoBlend;
 import java.util.ArrayList;
+import java.util.Iterator;
+
 public class GameObj {
     GameObj parent = null;
 
@@ -14,6 +16,14 @@ public class GameObj {
     public String getPath() {
         return path;
     }
+    final static int NORTH = 0;
+    final static int NORTHEAST = 1;
+    final static int EAST = 2;
+    final static int SOUTHEAST = 3;
+    final static int SOUTH = 4;
+    final static int SOUTHWEST = 5;
+    final static int WEST = 6;
+    final static int NORTHWEST = 7;
 
     TileHolder belongsTo;
     GameObj(String path, int dir) {
@@ -26,7 +36,8 @@ public class GameObj {
         }
         this.path = path;
     }
-
+    private GameObj(){
+    }
     public GameObj getChildren(int i) {
         return children.get(i);
     }
@@ -103,13 +114,23 @@ public class GameObj {
         String[] poop = s.split("=");
         String var = poop[0].replaceAll("\t| ","");
         String data = poop[1].replaceAll("'|\"'","").substring(1);
-        switch (var){
-            case "icon": this.setIcon(data);
-            break;
-            case "dir": this.setDir(dir);
-            break;
-            case "icon_state": this.setIcon_state(data);
-            break;
+        switch (var) {
+            case "icon" -> this.setIcon(data);
+            case "dir" -> this.setDir(dir);
+            case "icon_state" -> this.setIcon_state(data);
         }
+    }
+
+    @Override
+    public GameObj clone(){
+        GameObj g = new GameObj();
+        g.dir = this.dir;
+        g.parent = this.parent;
+        g.children = this.children;
+        g.path = this.path;
+        g.icon = this.icon;
+        g.icon_state = this.icon_state;
+        g.lightPower = this.lightPower;
+        return g;
     }
 }

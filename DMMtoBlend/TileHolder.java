@@ -1,18 +1,37 @@
 package DMMtoBlend;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Stack;
+import java.io.*;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class TileHolder {
-    static ArrayList<TileHolder> dictionary = new ArrayList<>();
-    String position;
-    Stack<GameObj> g = new Stack<>();
-    void tileAdd(){
-        dictionary.add(this);
-    }
-    void add(GameObj e){
-        g.push(e);
-    }
-    TileHolder(String pos){
-        position = pos;
+    private static HashMap<String, GameObj[]> dict;
+    static public GameObj mapRefToObject(String s) {
+        String[] a = s.split("\n");
+        GameObj g = null;
+        Pattern p = Pattern.compile("(\\/.*)[,){]|name = \\\"(.*?)\\\"|dir = (.)|icon_state = \\\"(.*?)\\\"");
+        for (int i = 0; i < a.length; i++) {
+            Matcher m = p.matcher(a[i]);
+            if (g == null)
+            g = DirectoryHelper.searchTree(m.group("reference")).clone();
+            String state = m.group("state");
+            String name = m.group("name");
+            String dir = m.group("dir");
+            g.setDir(dir);
+            g.setIcon_state(state);
+        }
+        //(\/.*)[,){]|name = \"(.*?)\"|dir = (.)|icon_state = \"(.*?)\"
+        // only feed it strings that come from /.*?,|/.*\)
+        // for example
+        // /obj/machinery/door/airlock/research{
+        //	req_access_txt = "8"
+        //	name = "Toxins Launch Site";
+        //	icon_state = "weed"
+        //	dir = 2
+        //	req_access_txt = "8"
+        //	},
+
+        // name = \"(.*?)\"|dir = (.)|icon_state = \"(.*?)\"
+        return g;
     }
 }

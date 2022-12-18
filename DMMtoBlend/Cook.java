@@ -54,7 +54,7 @@ public class Cook {
         finished = new String[list.size()];
         for (int i = 0; i < list.size(); i++) {
             finished[i] = list.get(i);
-            System.out.println(list.get(i));
+            //System.out.println(list.get(i));
         }
         return finished;
     }
