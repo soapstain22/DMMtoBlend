@@ -111,7 +111,7 @@ public class DirectoryHelper {
                 states[poop] = work;
             }
             if (work.startsWith("\tdirs = ")) {
-                work = work.replaceAll("\tdirs = ", "");
+                work = work.replaceAll("\tdirs   = ", "");
                 dirs[poop] = work;
             }
             if (work.startsWith("\tframes = ")) {

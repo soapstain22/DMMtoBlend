@@ -3,17 +3,21 @@ package DMMtoBlend;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
 
 public class MapData {
-    String pure;
-    String rawDefines;
+    String rawdefines = "";
+    String[] defines;
+    String rawmap = "";
+    String[] maps;
+    static Map<String, GameObj[]> dict;
 
-    MapData(String file) throws FileNotFoundException {
-        File f = new File(file);
-        Scanner s = new Scanner(f);
-        s.useDelimiter("//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE\n");
-        String pure = s.next();
-        rawDefines = pure.split("")[0];
+    public MapData(String mapPath) {
+    }
+
+    void processDefine(String s){
+        String coord = s.split("\"")[1];
+
     }
 }
