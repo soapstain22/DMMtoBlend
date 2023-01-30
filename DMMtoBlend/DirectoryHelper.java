@@ -11,6 +11,7 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -20,15 +21,10 @@ public class DirectoryHelper {
     public static void initDirectory(String p) {
         p = p.replace('/', '\\');
         if (!validPaths.contains(p)) {
-            //System.out.printf ("%-15s "+ p + "\n", "validating");
-            if (p == null){
-                System.out.println("lol its null");
-            }
             validPaths.add(p);
         }else{ //System.out.printf ("%-15s "+ p + "\n", "invalid");;
         }
     }
-
     public static String pullFileData(String inFile) throws IOException {
         //Returns only the icon's metadata.
         //System.out.printf ("%-15s "+ inFile + "\n", "pull md");
@@ -63,7 +59,6 @@ public class DirectoryHelper {
             return recurs(node.getParentNode().getNextSibling());
         } else return node;
     }
-
     public static void objGen(GameObj f) throws IOException {
         //System.out.printf ("%-15s "+f.getName()+ "\n", "objgen");
         String icon = pullFileData(Main.gameRoot + "\\" + f.getIcon());
@@ -141,7 +136,7 @@ public class DirectoryHelper {
     public static GameObj generateObjNodeTree(String s) {
         return generateObjNodeTree(s,root,0);
     }
-    public static GameObj generateObjNodeTree(String s,GameObj g, int depth) {
+    private static GameObj generateObjNodeTree(String s,GameObj g, int depth) {
 
         String[] poop = s.substring(1).split("/");
         StringBuilder j = new StringBuilder();

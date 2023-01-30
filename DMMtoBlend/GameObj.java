@@ -11,8 +11,9 @@ public class GameObj {
     private String path = "";
     private int dir = 0;
 	private float lightPower = 0;
-	private String modelOverride = null;
-	private int wallPress = 0;
+	private boolean density = false;
+	private final String modelOverride = null;
+	private final int wallPress = 0;
     public String getPath() {
         return path;
     }
@@ -29,13 +30,22 @@ public class GameObj {
     GameObj(String path, int dir) {
         this.dir = dir;
         this.path = path; }
-    GameObj(String path) {
+    public GameObj(String path) {
         if (path.equals("root")){
             DirectoryHelper.root = this;
             this.path = "root";
         }
         this.path = path;
     }
+
+    public boolean isDensity() {
+        return density;
+    }
+
+    public void setDensity(boolean density) {
+        this.density = density;
+    }
+
     private GameObj(){
     }
     public GameObj getChildren(int i) {
@@ -78,9 +88,6 @@ public class GameObj {
         //System.out.printf ("%-15s "+icon+ "\n", "set");
         this.icon = icon;
     }
-    public void setDensity(String icon) {
-        this.icon = icon;
-    }
     public void setDir(int dir) {
         this.dir = dir;
     }
@@ -90,12 +97,10 @@ public class GameObj {
                 break;
         }
     }
-
     public void setIcon_state(String icon_state) {
         icon_state = icon_state.replaceAll("\"","");
         this.icon_state = icon_state;
     }
-
     public String getIcon() {
         if (icon == null){
             if (hasParent()){
@@ -105,11 +110,9 @@ public class GameObj {
         }
         return icon;
     }
-
     public String getIcon_state() {
         return icon_state;
     }
-
     public void eatParams(String s){
         String[] poop = s.split("=");
         String var = poop[0].replaceAll("\t| ","");
@@ -118,6 +121,7 @@ public class GameObj {
             case "icon" -> this.setIcon(data);
             case "dir" -> this.setDir(dir);
             case "icon_state" -> this.setIcon_state(data);
+            case "density" -> this.setDensity(data.equals("true"));
         }
     }
 
@@ -132,5 +136,10 @@ public class GameObj {
         g.icon_state = this.icon_state;
         g.lightPower = this.lightPower;
         return g;
+    }
+
+    @Override
+    public String toString() {
+        return "|-" +getIcon() + "|-" + getName()+ "|-" +density+ "|-" +lightPower;
     }
 }

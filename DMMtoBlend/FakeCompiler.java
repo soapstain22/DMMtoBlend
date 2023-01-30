@@ -8,6 +8,7 @@ public class FakeCompiler {
 
     File f;
     public void compile() throws FileNotFoundException {
+        // fills in the entirety of the image directory from everything connected to root node
         System.out.println("Compiling...");
         f = new File(Main.DMEPath);
         Scanner s = new Scanner(f);
@@ -97,6 +98,6 @@ public class FakeCompiler {
         if (h.startsWith("icon_state =")) {
             return true;
         }
-        return false;
+        return h.startsWith("density =");
     }
 }

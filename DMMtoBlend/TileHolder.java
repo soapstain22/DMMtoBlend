@@ -6,6 +6,9 @@ import java.util.regex.Pattern;
 
 public class TileHolder {
     private static HashMap<String, GameObj[]> dict;
+    public static void bind(String s, GameObj[] d){
+        dict.put(s,d);
+    }
     static public GameObj mapRefToObject(String s) {
         String[] a = s.split("\n");
         GameObj g = null;
@@ -33,5 +36,18 @@ public class TileHolder {
 
         // name = \"(.*?)\"|dir = (.)|icon_state = \"(.*?)\"
         return g;
+    }
+    TileHolder(String s){
+        File f = new File(s);
+        Scanner sc = new Scanner(s).useDelimiter("(?=\\(.,.,.\\) = \\{)");
+        sc.next();
+        while (sc.hasNext()){
+            String[] poop = sc.next().split("(?=\\(.,.,.\\) = \\{)");
+
+        }
+    }
+
+    public static GameObj[] getDict(String s) {
+        return dict.get(s);
     }
 }
