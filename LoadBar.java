@@ -1,5 +1,3 @@
-package DMMtoBlend;
-
 public class LoadBar {
     public static void bar(int cur, int target, String msg){
         float a = (float) cur;

@@ -1,10 +1,4 @@
-package DMMtoBlend;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Map;
-import java.util.Scanner;
 
 public class MapData {
     String rawdefines = "";

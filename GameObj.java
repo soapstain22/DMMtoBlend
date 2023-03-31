@@ -1,6 +1,4 @@
-package DMMtoBlend;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class GameObj {
     GameObj parent = null;

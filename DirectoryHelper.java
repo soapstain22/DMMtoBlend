@@ -1,5 +1,3 @@
-package DMMtoBlend;
-
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
@@ -11,7 +9,6 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
