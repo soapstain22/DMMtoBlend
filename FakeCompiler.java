@@ -60,42 +60,26 @@ public class FakeCompiler {
             }
         }
     }
+
     private int dearGod(String h){
         h=h.replaceAll("\\(",")");
-        if (!h.matches("\t.*")) {
-            if (!h.startsWith("#")) {
-                if (!h.startsWith("//")) {
-                    if (!h.startsWith("  *")) {
-                        if (h.startsWith("/")) {
-                            if (!h.startsWith("/*")) {
-                                h = h.replaceAll(" ", "");
-                                if (h.contains(")") | h.contains("/proc/")) {
-                                    return 2;
-                                }
-                                return 1;
-                            }
-                        }
-                    }
-                }
-            }
+        if (h.matches("\t.*") || h.startsWith("#") || h.startsWith("//") || h.startsWith("  *") || !h.startsWith("/") || h.startsWith("/*")) {
+            return 0;
         }
-        return 0;
+        h = h.replaceAll(" ", "");
+        if (h.contains(")") | h.contains("/proc/")) {
+            return 2;
+        }
+        return 1;
     }
     private boolean isUsableData(String h) {
-        //System.out.printf ("%-15s "+h+ "\n", "isdata");
         h = h.replaceAll("\t", "");
-        if (h.startsWith("name =")) {
-            return true;
+        String[] strings = {"name =", "dir =", "icon =", "icon_state =", "density ="};
+        for (String str : strings) {
+            if (h.startsWith(str)) {
+                return true;
+            }
         }
-        if (h.startsWith("dir =")) {
-            return true;
-        }
-        if (h.startsWith("icon =")) {
-            return true;
-        }
-        if (h.startsWith("icon_state =")) {
-            return true;
-        }
-        return h.startsWith("density =");
+        return false;
     }
 }
